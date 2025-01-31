@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Icon } from 'svelte-icons-pack';
 	import { BiMenu } from 'svelte-icons-pack/bi';
+	import { VscGithub } from 'svelte-icons-pack/vsc';
 	import logo from '$lib/assets/logo.png';
 	import NavList from '$lib/components/layout/NavList.svelte';
 </script>
@@ -22,7 +23,9 @@
 		<NavList isBurgerMenu={false} />
 	</div>
 	<div class="navbar-end">
-		<a class="btn">Button</a>
+		<a href="https://github.com/CallePuzzle" target="_blank">
+			<Icon src={VscGithub} size="32" />
+		</a>
 	</div>
 </nav>
 

@@ -7,5 +7,5 @@
 </script>
 
 <ul class={ulClass}>
-	<li><a>Item 1</a></li>
+	<li><a href="/">Item 1</a></li>
 </ul>
