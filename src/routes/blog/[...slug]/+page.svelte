@@ -10,13 +10,18 @@
 	const { PostContent, post } = data;
 </script>
 
-<div>
-	<article>
-		<header>
-			<h1>{post.title}</h1>
-		</header>
-		<div>
-			<PostContent />
+<div class="hero w-screen" style={post.image ? `background-image: url(${post.image});` : ''}>
+	<div class="hero-overlay"></div>
+	<div class="hero-content text-neutral-content text-center">
+		<div class="max-w-md">
+			<h1 class="mb-5 text-5xl font-bold">{post.title}</h1>
+			<p class="mb-5">
+				{post.description}
+			</p>
 		</div>
-	</article>
+	</div>
 </div>
+
+<article>
+	<PostContent />
+</article>

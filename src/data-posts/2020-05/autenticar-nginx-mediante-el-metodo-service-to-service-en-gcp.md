@@ -6,11 +6,7 @@ tags: GCP, nginx, microservicios, español
 image: 2020-05/autenticar-nginx-mediante-el-metodo-service-to-service-en-gcp.webp
 ---
 
-# Autenticar nginx mediante el método service-to-service en GCP
-
 Imaginad que estamos montado una serie de microservicios en [Cloud Run](https://cloud.google.com/run) donde el endpoint es un nginx y no queremos tener el resto de servicios públicos.
-
-![](./autenticar-nginx-mediante-el-metodo-service-to-service-en-gcp.webp)
 
 Google nos provee de un método de autenticación [service-to-service](https://cloud.google.com/run/docs/authenticating/service-to-service). Perfecto, ¿cómo hacemos eso en nginx? Pues usando el módulo [ngx_http_auth_request_module](http://nginx.org/en/docs/http/ngx_http_auth_request_module.html) y el [njs scripting language](https://nginx.org/en/docs/njs/).
 

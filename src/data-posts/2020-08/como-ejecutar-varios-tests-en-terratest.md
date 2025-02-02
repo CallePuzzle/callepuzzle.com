@@ -6,10 +6,6 @@ tags: terratest, golang, testing
 image: 2020-08/como-ejecutar-varios-tests-en-terratest.webp
 ---
 
-# Como ejecutar varios tests en Terratest
-
-![](./como-ejecutar-varios-tests-en-terratest.webp)
-
 Terratest es un framework para ejecutar test en Terraform. En este caso yo tenía un módulo muy sencillo que compone un nombre y quería probar que todas las posibles entradas funcionasen.
 
 A la hora de ejecutar varios tests en Terratest, lo primero que se me vino a la cabeza fue crear varias funciones con cada caso que quería probar:

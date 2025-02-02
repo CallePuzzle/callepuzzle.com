@@ -6,11 +6,7 @@ tags: linux, nvidia, intel
 image: 2021-04/graphics-nvidia-intel.webp
 ---
 
-# Switchable graphics Nvidia / Intel in Linux
-
 Many laptops have two graphics; Intel, which saves power, and Nvidia, which gives better performance.
-
-![](./graphics-nvidia-intel.webp)
 
 There are [several options](https://wiki.archlinux.org/index.php/NVIDIA_Optimus#Use_switchable_graphics) to use switchable graphics, PRIME, Bumblebee, nvidia-xrun…
 

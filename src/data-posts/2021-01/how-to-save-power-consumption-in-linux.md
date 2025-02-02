@@ -6,10 +6,6 @@ tags: linux, powertop, battery
 image: 2021-01/how-to-save-power-consumption-in-linux.webp
 ---
 
-# How to save power consumption in Linux
-
-![](./how-to-save-power-consumption-in-linux.webp)
-
 [Powertop](https://wiki.archlinux.org/index.php/Powertop) is a great tool to save battery power and with the help of another tool, [acpid](https://wiki.archlinux.org/index.php/Acpid), to observe the acpi event and configure it automatically.
 
 Acpid comes with predefined actions for triggered events. By default, these actions are defined in /etc/acpi/handler.sh

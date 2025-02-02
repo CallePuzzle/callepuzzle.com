@@ -6,11 +6,7 @@ tags: kubernetes, kubebuilder, kubernetesoperator
 image: 2021-10/kubebuilder.webp
 ---
 
-# How to create custom pod with Kubebuilder
-
 In this post we’ll implement a simple Kubernetes controller using the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder).
-
-![](./kubebuilder.webp)
 
 Kubebuilder has a [book](https://book.kubebuilder.io/) but I think that it is too complex for beginning users. I’m going to try to do it easier. We’ll implement a simple operator which manage a pod.
 

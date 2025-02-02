@@ -6,11 +6,7 @@ tags: spinnaker, kubernetes, github, terraform
 image: 2021-02/github-flow-spinnaker-1.webp
 ---
 
-# GitHub Flow with Spinnaker (Part 1)
-
 In the microservices world, a way to work is following [GitHub Flow](https://guides.github.com/introduction/flow/):
-
-![](./github-flow-spinnaker-1.webp)
 
 The microservices’ repositories are small and simple because we have many repositories, each with a very specific functionality. So we can apply the premise that we are only going to work on one task or pull request per project because the code’s live cycling will be too short. And under this premise, we’re going to build a deployment flow in Kubernetes using Spinnaker.
 

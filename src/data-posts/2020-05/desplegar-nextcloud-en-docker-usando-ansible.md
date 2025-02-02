@@ -6,8 +6,6 @@ tags: nextcloud, docker, ansible
 image: 2020-05/desplegar-nextcloud-en-docker-usando-ansible-1.webp
 ---
 
-# Desplegar Nextcloud en Docker usando Ansible
-
 Nextcloud nos permite tener nuestro propio [servidor de archivos](https://nextcloud.com/files/) a lo Dropbox. Pero a mí lo que más me gusta es poder tener [mi calendario y mis contactos](https://nextcloud.com/groupware/) independiente del todopoderoso Google.
 
 Vamos a ver como podemos desplegar Nextcloud en una Debian usando Docker y todo ello automatizado con Ansible.
@@ -17,8 +15,6 @@ El esquema que vamos a tener es una máquina Debian con tres contenedores dentro
 - haproxy
 - nextcloud
 - mariadb
-
-![](./desplegar-nextcloud-en-docker-usando-ansible-1.webp)
 
 ## Requisitos
 
