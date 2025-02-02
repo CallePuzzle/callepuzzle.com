@@ -1,4 +1,3 @@
-// src/routes/+page.server.ts
 import { posts } from '$lib/blog/posts';
 import { postDates } from '$lib/blog/dates';
 import type { PageServerLoad } from './$types';

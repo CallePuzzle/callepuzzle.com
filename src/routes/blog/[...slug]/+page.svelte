@@ -1,5 +1,3 @@
-<!-- src/routes/blog/[slug]/page.svelte -->
-
 <script lang="ts">
 	import type { PageData } from './$types';
 
@@ -8,15 +6,17 @@
 	}: {
 		data: PageData;
 	} = $props();
+
+	const { PostContent, post } = data;
 </script>
 
 <div>
 	<article>
 		<header>
-			<h1>{data.post.title}</h1>
+			<h1>{post.title}</h1>
 		</header>
 		<div>
-			<svelte:component this={data.component} />
+			<PostContent />
 		</div>
 	</article>
 </div>

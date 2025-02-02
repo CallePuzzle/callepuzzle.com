@@ -1,5 +1,3 @@
-// src/routes/blog/[slug]/+page.server.ts
-
 import { posts } from '$lib/blog/posts';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
