@@ -13,7 +13,7 @@ tags: linux, powertop, battery
 
 Acpid comes with predefined actions for triggered events. By default, these actions are defined in /etc/acpi/handler.sh
 
-The action “ac\_adapter” has a default option
+The action “ac_adapter” has a default option
 
 ```
 *)

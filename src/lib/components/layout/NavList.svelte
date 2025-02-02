@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Routes from '$lib/routes';
 	let { isBurgerMenu }: { isBurgerMenu: boolean } = $props();
 
 	let ulClass = isBurgerMenu
@@ -7,5 +8,6 @@
 </script>
 
 <ul class={ulClass}>
-	<li><a href="/">Item 1</a></li>
+	<li><a href={Routes.home.getUrl()}>{Routes.home.name}</a></li>
+	<li><a href={Routes.blog.getUrl()}>{Routes.blog.name}</a></li>
 </ul>

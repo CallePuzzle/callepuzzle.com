@@ -13,16 +13,16 @@ Vamos a ver como podemos desplegar Nextcloud en una Debian usando Docker y todo 
 
 El esquema que vamos a tener es una máquina Debian con tres contenedores dentro:
 
--   haproxy
--   nextcloud
--   mariadb
+- haproxy
+- nextcloud
+- mariadb
 
 ![](./desplegar-nextcloud-en-docker-usando-ansible-1.webp)
 
 ## Requisitos
 
--   Tener acceso root a la máquina Debian.
--   Tener instalado Ansible.
+- Tener acceso root a la máquina Debian.
+- Tener instalado Ansible.
 
 A mí personalmente me gusta instalar Ansible en un virtualenv de python:
 
@@ -82,15 +82,15 @@ Y por último el playbook:
   vars:
     nextcloud_trusted_domains: 192.168.56.20
     nextcloud_ports: []
-    haproxy_cfg_template_path: "{{ playbook_dir }}/"
+    haproxy_cfg_template_path: '{{ playbook_dir }}/'
     haproxy_links:
       - nextcloud
     haproxy_ports:
       - 80:80
 
   roles:
-    - { role: nextcloud, tags: [ 'nextcloud' ] }
-    - { role: haproxy, tags: [ 'haproxy' ] }
+    - { role: nextcloud, tags: ['nextcloud'] }
+    - { role: haproxy, tags: ['haproxy'] }
 ```
 
 Y con esto tendríamos todo, al aplicar el playbook y entrar en la url [http://192.168.56.20](http://192.168.56.20/) podremos ver nuestro nextcloud instalado.

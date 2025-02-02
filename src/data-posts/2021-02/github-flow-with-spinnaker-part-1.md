@@ -19,10 +19,10 @@ We’re going to install Spinnaker using the Kubernetes Provider ([https://spinn
 
 Other things we need:
 
--   A project in Google Cloud Platform
--   gcloud cli tool
--   Terraform
--   Docker
+- A project in Google Cloud Platform
+- gcloud cli tool
+- Terraform
+- Docker
 
 There is the code to deploy all in this [repository](https://github.com/jilgue/medium-github-flow-spinnaker).
 

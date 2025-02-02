@@ -73,12 +73,12 @@ Con la sorpresa de que apareció un mensaje de error como este:
 
 ```
 TestTerraformNoFunction 2020-08-11T22:35:11+02:00 logger.go:66: avs-hb01-hub01-shs01-weu-dns-01
-    terraform_azure_test.go:52: 
+    terraform_azure_test.go:52:
         	Error Trace:	terraform_azure_test.go:52
-        	Error:      	Not equal: 
+        	Error:      	Not equal:
         	            	expected: "avs-hb01-hub01-shs01-weu-dns-01"
         	            	actual  : "avs-hb01-hub01-shs01-weu-01"
-        	            	
+
         	            	Diff:
         	            	--- Expected
         	            	+++ Actual
@@ -100,7 +100,7 @@ Después de revisarlo no veía error en el código, pero parecía que estuviese 
 
 Solución:
 
--   Quitar la ejecución en paralelo
+- Quitar la ejecución en paralelo
 
 ```go
 package test
@@ -156,7 +156,7 @@ func TestTerraformNoFunction(t *testing.T) {
 }
 ```
 
--   Ejecutar los tests desde una misma función
+- Ejecutar los tests desde una misma función
 
 ```go
 package test

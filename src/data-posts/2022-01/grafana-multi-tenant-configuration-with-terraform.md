@@ -13,18 +13,18 @@ Grafana provides an active provisioning system that uses config files. Data sour
 
 There are many tools to manage these config files:
 
--   [Puppet](https://forge.puppet.com/puppet/grafana)
--   [Ansible](https://github.com/cloudalchemy/ansible-grafana)
--   [Chef](https://github.com/JonathanTron/chef-grafana)
--   [Saltstack](https://github.com/salt-formulas/salt-formula-grafana)
--   [Jsonnet](https://github.com/grafana/grafonnet-lib/)
+- [Puppet](https://forge.puppet.com/puppet/grafana)
+- [Ansible](https://github.com/cloudalchemy/ansible-grafana)
+- [Chef](https://github.com/JonathanTron/chef-grafana)
+- [Saltstack](https://github.com/salt-formulas/salt-formula-grafana)
+- [Jsonnet](https://github.com/grafana/grafonnet-lib/)
 
 Grafana provisioning allows the configuration of data sources, plugins, dashboards and alert notification channels. All of these “objects” can be created in a specific organization.
 
 > This is great, what else would you like?
-> 
+>
 > I would like a little bit more. What happens with the organization or the users? Can I configure them by IaC?
-> 
+>
 > Yes, you can, and Terraform is going to help with that.
 
 ## Grafana provider
@@ -66,10 +66,10 @@ provider "grafana" {
 
 Enough theory, let’s take a practical example. For this you need:
 
--   [Terraform](https://www.terraform.io/downloads)
--   [Kind](https://kind.sigs.k8s.io/)
--   Cloning this repository: [https://github.com/jilgue/medium-grafana-multi-tenant](https://github.com/jilgue/medium-grafana-multi-tenant)
--   [Kubie](https://github.com/sbstp/kubie) (not necessary)
+- [Terraform](https://www.terraform.io/downloads)
+- [Kind](https://kind.sigs.k8s.io/)
+- Cloning this repository: [https://github.com/jilgue/medium-grafana-multi-tenant](https://github.com/jilgue/medium-grafana-multi-tenant)
+- [Kubie](https://github.com/sbstp/kubie) (not necessary)
 
 Deploy Grafana in Kubernetes cluster:
 

@@ -4,6 +4,7 @@
 	import { VscGithub } from 'svelte-icons-pack/vsc';
 	import logo from '$lib/assets/logo.png';
 	import NavList from '$lib/components/layout/NavList.svelte';
+	import Routes from '$lib/routes';
 </script>
 
 <nav class="navbar bg-base-100 shadow-sm">
@@ -14,7 +15,7 @@
 			</div>
 			<NavList isBurgerMenu={true} />
 		</div>
-		<a href="/" class="btn btn-ghost text-xl">
+		<a href={Routes.home.getUrl()} class="btn btn-ghost text-xl">
 			<img src={logo} alt="Logo" class="h-8 w-auto" />
 			<span class="calle-puzzle-gradient">Calle Puzzle</span>
 		</a>

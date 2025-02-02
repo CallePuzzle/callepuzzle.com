@@ -17,21 +17,21 @@ Kubebuilder has a [book](https://book.kubebuilder.io/) but I think that it is to
 
 Kubebuilder doesn’t support Go 1.17, so we need to install Go 1.16. I decided to use [goenv](https://github.com/syndbg/goenv) to manager Go versions.
 
--   Remove previous Go version
--   Install goenv: [https://github.com/syndbg/goenv/blob/master/INSTALL.md](https://github.com/syndbg/goenv/blob/master/INSTALL.md)
--   Install Go 1.16:
+- Remove previous Go version
+- Install goenv: [https://github.com/syndbg/goenv/blob/master/INSTALL.md](https://github.com/syndbg/goenv/blob/master/INSTALL.md)
+- Install Go 1.16:
 
 ```
 $ goenv install 1.16.8
 ```
 
--   Use this version:
+- Use this version:
 
 ```
 $ goenv global 1.16.8
 ```
 
--   Install Kubebuilder:
+- Install Kubebuilder:
 
 ```
 $ curl -L -o ~/.local/bin/kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)
@@ -66,9 +66,9 @@ go: creating new go.mod: module tmp
 Downloading sigs.k8s.io/kustomize/kustomize/v3@v3.8.7
 go get: added sigs.k8s.io/kustomize/kustomize/v3 v3.8.7
 /home/cesar/projects/k8s-operator/medium-kubebuilder-pod/bin/kustomize build config/crd | kubectl apply -f -
-customresourcedefinition.apiextensions.k8s.io/simplepods.medium.callepuzzle.com created$ kubectl get customresourcedefinitions.apiextensions.k8s.io simplepods.medium.callepuzzle.com 
+customresourcedefinition.apiextensions.k8s.io/simplepods.medium.callepuzzle.com created$ kubectl get customresourcedefinitions.apiextensions.k8s.io simplepods.medium.callepuzzle.com
 NAME                                CREATED AT
-simplepods.medium.callepuzzle.com   2021-10-13T15:47:52Z$ kubectl apply -f config/samples/medium_v1alpha1_simplepod.yaml$ kubectl get simplepods.medium.callepuzzle.com 
+simplepods.medium.callepuzzle.com   2021-10-13T15:47:52Z$ kubectl apply -f config/samples/medium_v1alpha1_simplepod.yaml$ kubectl get simplepods.medium.callepuzzle.com
 NAME               AGE
 simplepod-sample   9s
 ```
@@ -77,7 +77,7 @@ Ok, we can create “simplepod” resources but it doesn’t do anything, doesn�
 
 ## Make our custom resource
 
-In api/v1alpha1/simplepod\_types.go is defined struct of our resource.
+In api/v1alpha1/simplepod_types.go is defined struct of our resource.
 
 ```
 $ git diff api/v1alpha1/simplepod_types.go config/samples/medium_v1alpha1_simplepod.yaml
@@ -87,12 +87,12 @@ index f5f3fde..e4f0630 100644
 +++ b/api/v1alpha1/simplepod_types.go
 @@ -29,7 +29,7 @@ type SimplePodSpec struct {
         // Important: Run "make" to regenerate code after modifying this file
- 
+
         // Foo is an example field of SimplePod. Edit simplepod_types.go to remove/update
 -       Foo string `json:"foo,omitempty"`
 +       Command string `json:"command,omitempty"`
  }
- 
+
  // SimplePodStatus defines the observed state of SimplePod
 diff --git a/config/samples/medium_v1alpha1_simplepod.yaml b/config/samples/medium_v1alpha1_simplepod.yaml
 index 671c617..dd8cda0 100644
@@ -117,11 +117,11 @@ index 2f13668..89b63d0 100644
 --- a/controllers/simplepod_controller.go
 +++ b/controllers/simplepod_controller.go
 @@ -18,7 +18,10 @@ package controllers
- 
+
  import (
         "context"
 +       "strings"
- 
+
 +       corev1 "k8s.io/api/core/v1"
 +       metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
         "k8s.io/apimachinery/pkg/runtime"
@@ -132,7 +132,7 @@ index 2f13668..89b63d0 100644
  //+kubebuilder:rbac:groups=medium.callepuzzle.com,resources=simplepods/status,verbs=get;update;patch
  //+kubebuilder:rbac:groups=medium.callepuzzle.com,resources=simplepods/finalizers,verbs=update
 +//+kubebuilder:rbac:groups=core,resources=pods,verbs=get;list;watch;create;update;patch;delete
- 
+
  // Reconcile is part of the main kubernetes reconciliation loop which aims to
  // move the current state of the cluster closer to the desired state.
 @@ -47,16 +51,62 @@ type SimplePodReconciler struct {
@@ -141,7 +141,7 @@ index 2f13668..89b63d0 100644
  func (r *SimplePodReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 -       _ = log.FromContext(ctx)
 +       log := log.FromContext(ctx)
- 
+
 -       // your logic here
 +       var instance mediumv1alpha1.SimplePod
 +       errGet := r.Get(ctx, req.NamespacedName, &instance)
@@ -165,10 +165,10 @@ index 2f13668..89b63d0 100644
 +       if err != nil {
 +               return ctrl.Result{}, err
 +       }
- 
+
         return ctrl.Result{}, nil
  }
- 
+
 +func NewPod(pod *mediumv1alpha1.SimplePod) *corev1.Pod {
 +       labels := map[string]string{
 +               "app": pod.Name,
@@ -214,7 +214,7 @@ $ make run
 $ kubectl get pod
 NAME               READY   STATUS      RESTARTS   AGE
 simplepod-sample   0/1     Completed   0          3s
-$ kubectl logs simplepod-sample 
+$ kubectl logs simplepod-sample
 bin
 dev
 etc

@@ -25,7 +25,6 @@ Following [Archlinux Nvidia guide](https://wiki.archlinux.org/index.php/NVIDIA#D
   hosts: localhost
   become: yes
   tasks:
-
     - name: X11
       ansible.builtin.file:
         path: /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
@@ -37,7 +36,7 @@ Following [Archlinux Nvidia guide](https://wiki.archlinux.org/index.php/NVIDIA#D
         insertafter: |
           #!/bin/sh
           # Xsetup - run as root before the login dialog appears
-        block: ""
+        block: ''
 
     - name: GRUB
       ansible.builtin.lineinfile:
@@ -76,10 +75,9 @@ Following [Archlinux Nvidia guide](https://wiki.archlinux.org/index.php/NVIDIA#D
   hosts: localhost
   become: yes
   tasks:
-
     - name: X11
       ansible.builtin.copy:
-        src: "{{ playbook_dir }}/10-nvidia-drm-outputclass.conf"
+        src: '{{ playbook_dir }}/10-nvidia-drm-outputclass.conf'
         dest: /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
         owner: root
         group: root

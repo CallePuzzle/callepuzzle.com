@@ -1,9 +1,13 @@
 <!-- src/routes/+page.svelte -->
 
 <script lang="ts">
-	import type { PageServerData } from './$types';
+	import type { PageData } from './$types';
 
-	export let data: PageServerData;
+	let {
+		data
+	}: {
+		data: PageData;
+	} = $props();
 </script>
 
 <div class="container">
