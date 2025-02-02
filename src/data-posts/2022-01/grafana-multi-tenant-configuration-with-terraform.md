@@ -36,7 +36,7 @@ For managing resources in different organizations with Terraform you have to con
 
 For example:
 
-```hcl
+```terraform
 provider "grafana" {
   url  = "http://127.0.0.1:3000"
   auth = "admin:admin"
@@ -48,7 +48,7 @@ So, the idea is having two different providers using [alias](https://www.terrafo
 
 Example:
 
-```hcl
+```terraform
 provider "grafana" {
   url  = "http://127.0.0.1:3000"
   auth = "admin:admin"

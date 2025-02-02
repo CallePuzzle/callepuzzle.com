@@ -48,7 +48,7 @@ nextcloud ansible_ssh_host=192.168.56.20
 
 También la configuracion del haproxy:
 
-```cfg
+```
 global
     daemon
     maxconn 256
