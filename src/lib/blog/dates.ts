@@ -1,6 +1,6 @@
 import { posts } from '$lib/blog/posts';
 
-type PostDate = {
+export type PostDate = {
 	day: number;
 	month: number;
 	year: number;
