@@ -3,6 +3,7 @@ title: Autenticar nginx mediante el método service-to-service en GCP
 date: '2020-05-03'
 description: Autenticar nginx mediante el método service-to-service en GCP
 tags: GCP, nginx, microservicios, español
+image: 2020-05/autenticar-nginx-mediante-el-metodo-service-to-service-en-gcp.webp
 ---
 
 # Autenticar nginx mediante el método service-to-service en GCP

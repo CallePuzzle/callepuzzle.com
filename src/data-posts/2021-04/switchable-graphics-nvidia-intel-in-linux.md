@@ -3,6 +3,7 @@ title: Switchable graphics Nvidia / Intel in Linux
 date: '2021-04-28'
 description: How to enable and disable Nvidia in Linux
 tags: linux, nvidia, intel
+image: 2021-04/graphics-nvidia-intel.webp
 ---
 
 # Switchable graphics Nvidia / Intel in Linux

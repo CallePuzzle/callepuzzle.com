@@ -8,7 +8,7 @@
 	<div class="drawer-content">
 		<label for="my-drawer-4" class="drawer-button btn btn-primary">Ver fechas y tags</label>
 	</div>
-	<div class="drawer-side">
+	<div class="drawer-side z-10">
 		<label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
 		<ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
 			{#each postDates as postDate}
@@ -16,11 +16,11 @@
 					<p>{postDate.year}-{postDate.month}</p>
 				</li>
 			{/each}
-            {#each postDates as postDate}
-                <li>
-                    <p>tag</p>
-                </li>
-            {/each}
+			{#each postDates as postDate}
+				<li>
+					<p>tag</p>
+				</li>
+			{/each}
 		</ul>
 	</div>
 </div>

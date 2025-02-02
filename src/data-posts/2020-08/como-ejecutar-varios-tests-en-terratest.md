@@ -3,6 +3,7 @@ title: Como ejecutar varios tests en Terratest
 date: '2020-08-13'
 description: Como ejecutar varios tests en Terratest
 tags: terratest, golang, testing
+image: 2020-08/como-ejecutar-varios-tests-en-terratest.webp
 ---
 
 # Como ejecutar varios tests en Terratest

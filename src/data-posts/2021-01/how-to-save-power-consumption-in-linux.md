@@ -3,6 +3,7 @@ title: How to save power consumption in Linux
 date: '2021-01-19'
 description: How to save battery power in Linux using Powertop and acpid
 tags: linux, powertop, battery
+image: 2021-01/how-to-save-power-consumption-in-linux.webp
 ---
 
 # How to save power consumption in Linux

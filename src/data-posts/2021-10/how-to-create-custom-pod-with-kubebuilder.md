@@ -3,6 +3,7 @@ title: How to create custom pod with Kubebuilder
 date: '2021-10-13'
 description: In this post we’ll implement a simple Kubernetes controller using the kubebuilder.
 tags: kubernetes, kubebuilder, kubernetesoperator
+image: 2021-10/kubebuilder.webp
 ---
 
 # How to create custom pod with Kubebuilder

@@ -7,6 +7,7 @@ export interface Post {
 	title: string;
 	description: string;
 	date: string;
+	image?: string;
 }
 
 // Get all posts and add metadata
@@ -17,7 +18,8 @@ export const posts = Object.entries(
 		return {
 			...globEntry.metadata,
 			slug: filepath.replace('.md', '').replace('/src/data-posts/', ''),
-			filepath: filepath
+			filepath: filepath,
+			image: globEntry.metadata.image ? `/src/data-posts/${globEntry.metadata.image}` : undefined
 		};
 	})
 	// sort by date

@@ -3,6 +3,7 @@ title: GitHub Flow with Spinnaker (Part 1)
 date: '2021-02-23'
 description: Deploy Spinnaker in Kubernetes using Terraform and Halyard
 tags: spinnaker, kubernetes, github, terraform
+image: 2021-02/github-flow-spinnaker-1.webp
 ---
 
 # GitHub Flow with Spinnaker (Part 1)

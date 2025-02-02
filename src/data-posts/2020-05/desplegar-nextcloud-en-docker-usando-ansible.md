@@ -3,6 +3,7 @@ title: Desplegar Nextcloud en Docker usando Ansible
 date: '2020-05-09'
 description: Desplegar Nextcloud en Docker usando Ansible
 tags: nextcloud, docker, ansible
+image: 2020-05/desplegar-nextcloud-en-docker-usando-ansible-1.webp
 ---
 
 # Desplegar Nextcloud en Docker usando Ansible

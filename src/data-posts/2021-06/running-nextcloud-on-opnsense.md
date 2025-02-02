@@ -3,6 +3,7 @@ title: Running Nextcloud on OPNsense
 date: '2021-06-16'
 description: In this article we’re going to see how to run Nextcloud on a OPNsense.
 tags: nextcloud, opnsense, docker, vm-bhyve
+image: 2021-06/nextcloud-opnsense-1.webp
 ---
 
 # Running Nextcloud on OPNsense
