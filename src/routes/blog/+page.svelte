@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import blogIndex from '$lib/assets/blog-index.jpg';
+	import Drawer from '$lib/components/blog/Drawer.svelte';
 
 	let {
 		data
@@ -9,7 +11,23 @@
 </script>
 
 <div class="container">
-	<h1>Markdown Blog</h1>
+	<div class="hero bg-base-200">
+		<div class="hero-content flex-col lg:flex-row">
+			<img
+				src={blogIndex}
+				class="max-w-sm rounded-lg shadow-2xl"
+				alt="Hand coloring blue puzzle piece with green pencil"
+			/>
+			<div>
+				<h1 class="text-5xl font-bold">Blog</h1>
+				<p class="py-6">
+					Bienvenido al blog de Calle Puzzle, donde encontrarás artículos sobre tecnología y
+					desarrollo web.
+				</p>
+				<Drawer />
+			</div>
+		</div>
+	</div>
 
 	<ul class="links">
 		{#each data.posts as post}
@@ -29,37 +47,3 @@
 		{/each}
 	</ul>
 </div>
-
-<style lang="scss">
-	.container {
-		width: 60%;
-		margin: 1.25rem auto;
-		text-align: center;
-
-		h1 {
-			font-size: 1.5rem;
-			line-height: 2rem;
-			font-weight: 600;
-			color: #ffffff;
-			padding: 1rem;
-			border-radius: 0.25rem;
-			background-color: #2563eb;
-		}
-
-		.links {
-			margin: 0.625rem 0;
-			padding: 0;
-			list-style-type: none;
-
-			a {
-				text-decoration-line: underline;
-				color: #2563eb;
-				font-size: 1.25rem;
-				line-height: 1.75rem;
-				:hover {
-					color: #1e40af;
-				}
-			}
-		}
-	}
-</style>
