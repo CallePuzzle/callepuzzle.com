@@ -1,18 +1,19 @@
 import { posts } from '$lib/blog/posts';
 import { error } from '@sveltejs/kit';
+import FusionCollection from 'fusionable/FusionCollection';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }: { params: { slug: string } }) => {
 	const { slug } = params;
 
-	// get post with metadata
-	const post = posts.find((post) => slug === post.slug);
+	const collection = new FusionCollection().loadFromDir('src/data-posts/2020-05');
+	const post = collection.getOneBySlug(slug);
 
 	if (!post) {
 		throw error(404, 'Post not found');
 	}
 
 	return {
-		post
+		post: post.getItem()
 	};
 };

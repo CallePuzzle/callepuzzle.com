@@ -9,8 +9,8 @@
 		data: PageData;
 	} = $props();
 
-	const { posts, postDates } = data;
-	console.log('posts', posts);
+	const { posts } = data;
+	const postDates = null;
 </script>
 
 <div class="hero bg-base-200">
@@ -34,14 +34,14 @@
 <div class="z-0 flex flex-wrap justify-center">
 	{#each posts as post}
 		<div class="card bg-base-100 image-full w-96 p-4 shadow-sm">
-			{#if post.image}
+			{#if post.fields.image}
 				<figure>
-					<img src={post.image} alt={post.title} />
+					<img src={post.fields.image} alt={post.fields.title} />
 				</figure>
 			{/if}
 			<div class="card-body">
-				<h2 class="card-title"><a href={`blog/${post.slug}`}>{post.title}</a></h2>
-				<p>{post.description}</p>
+				<h2 class="card-title"><a href={`blog/${post.fields.slug}`}>{post.fields.title}</a></h2>
+				<p>{post.fields.description}</p>
 			</div>
 		</div>
 	{/each}

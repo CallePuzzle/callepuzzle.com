@@ -1,4 +1,5 @@
 ---
+slug: autenticar-nginx-mediante-el-metodo-service-to-service-en-gcp
 title: Autenticar nginx mediante el método service-to-service en GCP
 date: '2020-05-03'
 description: Autenticar nginx mediante el método service-to-service en GCP
@@ -25,7 +26,6 @@ server {
         proxy_set_header Authorization $authorization;
         proxy_pass https://patinando-int-api-tfezajqgva-ew.a.run.app;
     }
-
 
     location = /_oauth2 {
         internal;
