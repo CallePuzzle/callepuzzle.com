@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Showdown from 'showdown';
 	import type { PageData } from './$types';
 
 	let {
@@ -8,6 +9,8 @@
 	} = $props();
 
 	const { PostContent, post } = data;
+	const converter = new Showdown.Converter();
+	const postContentHTML = converter.makeHtml(post.content);
 </script>
 
 <div class="hero w-screen" style={post.image ? `background-image: url(${post.image});` : ''}>
@@ -23,7 +26,7 @@
 </div>
 
 <article class="article__blog container px-10 py-5">
-	<PostContent />
+	{@html postContentHTML}
 </article>
 
 <style>
