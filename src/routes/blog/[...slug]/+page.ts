@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { posts } from '$lib/blog/posts';
+import { posts, postsMetadataByDate } from '$lib/blog/posts';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
@@ -11,7 +11,7 @@ export const load: PageLoad = async ({ params }) => {
 
 	return {
 		content: post.default,
-		metadata: post.metadata
+		metadata: postsMetadataByDate.find((post) => post.slug === params.slug)!
 	};
 };
 

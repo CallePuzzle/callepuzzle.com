@@ -1,4 +1,9 @@
+import { getImage } from '$lib/blog/images';
 import type { Component } from 'svelte';
+
+interface Image {
+	default: unknown;
+}
 
 export interface Post {
 	title: string;
@@ -17,7 +22,7 @@ export const postsMetadataByDate = Object.entries(posts)
 			...globEntry.metadata,
 			slug: filepath.replace('.md', '').replace('/src/data-posts/', ''),
 			filepath: filepath,
-			image: globEntry.metadata.image ? `/src/data-posts/${globEntry.metadata.image}` : undefined
+			image: getImage(globEntry.metadata.image) as Image | undefined
 		};
 	})
 	// sort by date

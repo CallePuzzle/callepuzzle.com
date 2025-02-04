@@ -10,10 +10,10 @@
 	const { content: PostContent, metadata } = data;
 </script>
 
-<div
-	class="hero w-screen"
-	style={metadata.image ? `background-image: url(/src/data-posts/${metadata.image});` : ''}
->
+<div class="hero w-screen">
+	{#if metadata.image?.default}
+		<enhanced:img src={metadata.image.default} alt={metadata.title} class="max-h-64 lg:max-h-80" />
+	{/if}
 	<div class="hero-overlay"></div>
 	<div class="hero-content text-neutral-content text-center">
 		<div class="max-w-md">

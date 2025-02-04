@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	const imageModules = import.meta.glob(
+		'/src/data-posts/**/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}',
+		{
+			eager: true,
+			query: {
+				enhanced: true
+			}
+		}
+	);
+</script>
+
+{#each Object.entries(imageModules) as [_path, module]}
+	<enhanced:img src={module.default} alt="some alt text" />
+{/each}
