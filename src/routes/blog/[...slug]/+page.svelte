@@ -7,16 +7,19 @@
 		data: PageData;
 	} = $props();
 
-	const { PostContent, post } = data;
+	const { content: PostContent, metadata } = data;
 </script>
 
-<div class="hero w-screen" style={post.image ? `background-image: url(${post.image});` : ''}>
+<div class="hero w-screen">
+	{#if metadata.image?.default}
+		<enhanced:img src={metadata.image.default} alt={metadata.title} class="max-h-64 lg:max-h-80" />
+	{/if}
 	<div class="hero-overlay"></div>
 	<div class="hero-content text-neutral-content text-center">
 		<div class="max-w-md">
-			<h1 class="mb-5 text-5xl font-bold">{post.title}</h1>
+			<h1 class="mb-5 text-5xl font-bold">{metadata.title}</h1>
 			<p class="mb-5">
-				{post.description}
+				{metadata.description}
 			</p>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-import { posts } from '$lib/blog/posts';
+import { postsMetadataByDate } from '$lib/blog/posts';
 
 export type PostDate = {
 	day: number;
@@ -6,7 +6,7 @@ export type PostDate = {
 	year: number;
 };
 
-export const postDates = posts.map((post) => {
+export const postDates = postsMetadataByDate.map((post) => {
 	const date = new Date(post.date);
 	return {
 		day: date.getDate(),

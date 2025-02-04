@@ -1,15 +1,26 @@
-import type { PageLoad } from './$types';
+import { error } from '@sveltejs/kit';
+import { posts, postsMetadataByDate } from '$lib/blog/posts';
+import type { EntryGenerator, PageLoad } from './$types';
 
-export const load: PageLoad = async ({ data }) => {
-	// load the markdown file based on slug
-	/* @vite-ignore */
-	const postContent = await import(data.post.filepath);
+export const load: PageLoad = async ({ params }) => {
+	const post = posts['/src/data-posts/' + params.slug + '.md'];
+
+	if (!post) {
+		throw error(404, 'Post not found');
+	}
 
 	return {
-		post: data.post,
-		PostContent: postContent.default,
-		layout: {
-			fullWidth: true
-		}
+		content: post.default,
+		metadata: postsMetadataByDate.find((post) => post.slug === params.slug)!
 	};
 };
+
+export const entries: EntryGenerator = async () => {
+	const entries = Object.keys(posts).map((path) => {
+		return { slug: path.replace('.md', '').replace('/src/data-posts/', '') };
+	});
+
+	return entries;
+};
+
+export const prerender = true;
