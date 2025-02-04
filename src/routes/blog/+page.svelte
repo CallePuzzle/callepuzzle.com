@@ -9,8 +9,7 @@
 		data: PageData;
 	} = $props();
 
-	const { posts, postDates } = data;
-	console.log('posts', posts);
+	const { postsMetadataByDate, postDates } = data;
 </script>
 
 <div class="hero bg-base-200">
@@ -32,7 +31,7 @@
 </div>
 
 <div class="z-0 flex flex-wrap justify-center">
-	{#each posts as post}
+	{#each postsMetadataByDate as post}
 		<div class="card bg-base-100 image-full w-96 p-4 shadow-sm">
 			{#if post.image}
 				<figure>

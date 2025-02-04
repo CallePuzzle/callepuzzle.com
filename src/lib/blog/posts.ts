@@ -1,7 +1,4 @@
-type GlobEntry = {
-	metadata: Post;
-	default: unknown;
-};
+import type { Component } from 'svelte';
 
 export interface Post {
 	title: string;
@@ -10,10 +7,11 @@ export interface Post {
 	image?: string;
 }
 
-// Get all posts and add metadata
-export const posts = Object.entries(
-	import.meta.glob<GlobEntry>('/src/data-posts/**/*.md', { eager: true })
-)
+export type GlobEntry = { default: Component; metadata: Post };
+
+export const posts = import.meta.glob<GlobEntry>('/src/data-posts/**/*.md', { eager: true });
+
+export const postsMetadataByDate = Object.entries(posts)
 	.map(([filepath, globEntry]) => {
 		return {
 			...globEntry.metadata,
