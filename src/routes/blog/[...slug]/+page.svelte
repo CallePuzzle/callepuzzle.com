@@ -12,7 +12,11 @@
 
 <div class="hero w-screen">
 	{#if metadata.image?.default}
-		<enhanced:img src={metadata.image.default} alt={metadata.title} class="max-h-64 lg:max-h-80" />
+		<enhanced:img
+			src={metadata.image.default}
+			alt={metadata.title}
+			class="max-h-64 rounded-2xl lg:max-h-80"
+		/>
 	{/if}
 	<div class="hero-overlay"></div>
 	<div class="hero-content text-neutral-content text-center">

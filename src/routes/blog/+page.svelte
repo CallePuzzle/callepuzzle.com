@@ -34,7 +34,9 @@
 	{#each postsMetadataByDate as post}
 		<div class="card bg-base-100 image-full w-96 p-4 shadow-sm">
 			{#if post.image?.default}
-				<enhanced:img src={post.image.default} alt={post.title} />
+				<div class="grid max-h-full max-w-full content-center">
+					<enhanced:img class="max-h-48 rounded-2xl" src={post.image.default} alt={post.title} />
+				</div>
 			{/if}
 			<div class="card-body">
 				<h2 class="card-title"><a href={`blog/${post.slug}`}>{post.title}</a></h2>
