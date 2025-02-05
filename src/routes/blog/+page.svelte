@@ -16,7 +16,7 @@
 	<div class="hero-content flex-col lg:flex-row">
 		<enhanced:img
 			src={blogIndex}
-			class="max-h-64 max-w-sm rounded-lg shadow-2xl lg:max-h-full"
+			class="max-h-64 max-w-xs rounded-lg shadow-2xl lg:max-h-full"
 			alt="Hand coloring blue puzzle piece with green pencil"
 		/>
 		<div>
