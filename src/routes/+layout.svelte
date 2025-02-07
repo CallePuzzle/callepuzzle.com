@@ -3,10 +3,14 @@
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import '../app.css';
 	import Nav from '$lib/components/layout/Nav.svelte';
-	let { children } = $props();
+	import type { PageData } from './$types';
+	import type { Snippet } from 'svelte';
+	let { children, data }: { children: Snippet; data: PageData } = $props();
 </script>
 
-<ParaglideJS {i18n}>
-	<Nav />
-	{@render children()}
-</ParaglideJS>
+<div class="h-dvh">
+	<ParaglideJS {i18n}>
+		<Nav />
+		{@render children()}
+	</ParaglideJS>
+</div>
