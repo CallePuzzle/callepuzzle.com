@@ -10,9 +10,7 @@
 
 <div class="h-dvh">
 	<ParaglideJS {i18n}>
-		{#if data.path !== '/'}
-			<Nav />
-		{/if}
+		<Nav />
 		{@render children()}
 	</ParaglideJS>
 </div>
