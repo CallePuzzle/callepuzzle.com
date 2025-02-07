@@ -1,8 +1,7 @@
 <script lang="ts">
 	import backgroundName from '$lib/assets/background-name.jpg?enhanced';
 </script>
-
-<section id="background" class="flex h-svw w-screen items-center justify-center">
+<section id="background" class="flex h-[90vh] w-screen items-center justify-center">
 	<enhanced:img src={backgroundName}> </enhanced:img>
 </section>
 
