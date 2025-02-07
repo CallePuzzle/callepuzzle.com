@@ -3,12 +3,16 @@
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import '../app.css';
 	import Nav from '$lib/components/layout/Nav.svelte';
-	let { children } = $props();
+	import type { PageData } from './$types';
+	import type { Snippet } from 'svelte';
+	let { children, data }: { children: Snippet; data: PageData } = $props();
 </script>
 
-<main style="margin: 0; display: flex; flex-direction: column; min-height: 100vh;">
+<div class="h-dvh">
 	<ParaglideJS {i18n}>
-		<Nav />
+		{#if data.path !== '/'}
+			<Nav />
+		{/if}
 		{@render children()}
 	</ParaglideJS>
-</main>
+</div>

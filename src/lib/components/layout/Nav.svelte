@@ -25,7 +25,7 @@
 	});
 </script>
 
-<nav class="navbar bg-base-100 shadow-sm">
+<nav class="navbar bg-base-100 relative z-10 shadow-sm">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">

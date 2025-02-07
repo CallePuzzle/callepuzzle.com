@@ -1,43 +1,47 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import gsap from 'gsap/dist/gsap';
-	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import backgroundPiece from '$lib/assets/background-piece.jpg?enhanced';
+	import Nav from '$lib/components/layout/Nav.svelte';
 
-	if (browser) {
-		gsap.registerPlugin(ScrollTrigger);
-	}
+	import type * as GSAP from 'gsap';
 
-	let boxesContainer: ReturnType<typeof gsap.selector>;
+	let gsap: GSAP;
+	let ScrollTrigger: any;
+	let gsapContext: GSAP.Context;
+	let content: HTMLElement;
 
-	onMount(() => {
-		const ctx = gsap.context((self) => {
-			const boxes = self.selector('.box');
-			boxes.forEach((box) => {
-				gsap.to(box, {
-					x: 150,
-					scrollTrigger: {
-						trigger: box,
-						start: 'bottom bottom',
-						end: 'top 20%',
-						scrub: true
-					}
-				});
+	console.log(backgroundPiece);
+
+	onMount(async () => {
+		if (browser) {
+			gsap = (await import('gsap')).default;
+			ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+			gsap.registerPlugin(ScrollTrigger);
+		}
+
+		gsapContext = gsap.context(() => {
+			gsap.to('#content', {
+				scrollTrigger: {
+					trigger: '#background',
+					start: 'top top',
+					end: 'bottom bottom',
+					scrub: true,
+					toggleClass: 'fade-in'
+				},
+				autoAlpha: 1
 			});
-		}, boxesContainer); // <- Scope!
+		}, content);
+	});
 
-		return () => ctx.revert(); // <- Cleanup!
+	onDestroy(() => {
+		gsapContext.revert();
 	});
 </script>
 
-<div>
-	<div>
-		<div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
-			<enhanced:img src={backgroundPiece} alt="Logo" style="max-height: 100vh; max-width: 100vw;"/>
-		</div>
-	</div>
-	<section class="">
+<div class="bg-[url($lib/assets/background-piece.jpg)] bg-fixed">
+	<section id="background" class="h-dvh w-screen"></section>
+	<section class="h-dvh w-screen" id="content" bind:this={content}>
+		<Nav />
 	</section>
 </div>
-
