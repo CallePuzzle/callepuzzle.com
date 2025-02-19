@@ -1,5 +1,5 @@
+import { codeToHtml } from 'shiki';
 import { escapeSvelte } from 'mdsvex';
-import { createHighlighter } from 'shiki';
 import relativeImages from 'mdsvex-relative-images';
 
 const config = {
@@ -9,20 +9,11 @@ const config = {
 	},
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
-			const highlighter = await createHighlighter({
-				themes: ['poimandres'],
-				langs: ['javascript', 'typescript', 'nginx', 'ini', 'terraform', 'yaml', 'go']
+			const returned = await codeToHtml(code, {
+				theme: 'github-dark',
+				lang
 			});
-			await highlighter.loadLanguage(
-				'javascript',
-				'typescript',
-				'nginx',
-				'ini',
-				'terraform',
-				'yaml',
-				'go'
-			);
-			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'poimandres' }));
+			const html = escapeSvelte(returned);
 			return `{@html \`${html}\` }`;
 		}
 	},
