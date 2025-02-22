@@ -15,6 +15,10 @@ const Routes: Routes = {
 	blog: {
 		name: 'Blog',
 		getUrl: () => '/blog'
+	},
+	quienesSomos: {
+		name: 'Quienes somos',
+		getUrl: () => '/#quienes-somos'
 	}
 };
 

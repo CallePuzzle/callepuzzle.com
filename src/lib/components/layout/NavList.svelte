@@ -10,4 +10,5 @@
 <ul class={ulClass}>
 	<li><a href={Routes.home.getUrl()}>{Routes.home.name}</a></li>
 	<li><a href={Routes.blog.getUrl()}>{Routes.blog.name}</a></li>
+	<li><a href={Routes.quienesSomos.getUrl()}>{Routes.quienesSomos.name}</a></li>
 </ul>
