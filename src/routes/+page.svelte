@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Routes from '$lib/routes';
 	import backgroundName from '$lib/assets/background-name.jpg?enhanced';
 </script>
 
@@ -17,17 +18,19 @@
 	</p>
 
 	<p>
-		Desde la evolución de la instalación de nuestro <a href="https://nextcloud.com">NextCloud</a>:
+		Desde la evolución de la instalación de nuestro <a href="https://nextcloud.com" target="_blank"
+			>NextCloud</a
+		>:
 	</p>
 
 	<ul>
 		<li>
-			<a href="https://github.com/CallePuzzle/ansible-role-docker-nextcloud"
+			<a href="https://github.com/CallePuzzle/ansible-role-docker-nextcloud" target="_blank"
 				>ansible-role-docker-nextcloud</a
 			>
 		</li>
 		<li>
-			<a href="https://github.com/CallePuzzle/villajilguero-oci-services"
+			<a href="https://github.com/CallePuzzle/villajilguero-oci-services" target="_blank"
 				>villajilguero-oci-services</a
 			>
 		</li>
@@ -35,13 +38,15 @@
 
 	<p>
 		La creación de un action para GitHub: <a
-			href="https://github.com/CallePuzzle/envvar-to-dotenv-action">envvar-to-dotenv-action</a
+			href="https://github.com/CallePuzzle/envvar-to-dotenv-action"
+			target="_blank">envvar-to-dotenv-action</a
 		>
 	</p>
 
 	<p>
 		Una aplicación web para localizar las peñas del pueblo: <a
-			href="https://github.com/CallePuzzle/donde-esta-tu-local">donde-esta-tu-local</a
+			href="https://github.com/CallePuzzle/donde-esta-tu-local"
+			target="_blank">donde-esta-tu-local</a
 		>
 	</p>
 
@@ -49,20 +54,22 @@
 
 	<ul>
 		<li>
-			una lista de compra con vitaminas: <a href="https://github.com/CallePuzzle/y-tu-que-compras"
-				>y-tu-que-compras</a
+			una lista de compra con vitaminas: <a
+				href="https://github.com/CallePuzzle/y-tu-que-compras"
+				target="_blank">y-tu-que-compras</a
 			>
 		</li>
 		<li>
 			un calendario para gestionar tus gastos: <a
-				href="https://github.com/CallePuzzle/cash-calendar">cash-calendar</a
+				href="https://github.com/CallePuzzle/cash-calendar"
+				target="_blank">cash-calendar</a
 			>
 		</li>
 	</ul>
 
 	<p>
-		Además en nuestro blog encontrarás artículos que predenden resumir o solucionar problemas
-		encontrados a lo largo de nuestra experiencia.
+		Además en nuestro <a href={Routes.blog.getUrl()}>blog</a> encontrarás artículos que predenden resumir
+		o solucionar problemas encontrados a lo largo de nuestra experiencia.
 	</p>
 </section>
 
