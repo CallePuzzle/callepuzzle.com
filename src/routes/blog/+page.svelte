@@ -21,10 +21,7 @@
 		/>
 		<div>
 			<h1 class="text-5xl font-bold">Blog</h1>
-			<p class="py-6">
-				Bienvenido al blog de Calle Puzzle, donde encontrarás artículos sobre tecnología y
-				desarrollo web.
-			</p>
+			<p class="py-6">Lo que no contamos en GitHub</p>
 			<Drawer {postDates} />
 		</div>
 	</div>
