@@ -4,3 +4,7 @@
 		nord --default,
 		night --prefersdark;
 }
+
+html {
+	scroll-behavior: smooth;
+}
