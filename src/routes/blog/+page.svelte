@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import blogIndex from '$lib/assets/blog-index.jpg?enhanced';
-	import Drawer from '$lib/components/blog/Drawer.svelte';
+	// import Drawer from '$lib/components/blog/Drawer.svelte';
 
 	let {
 		data
@@ -22,7 +22,7 @@
 		<div>
 			<h1 class="text-5xl font-bold">Blog</h1>
 			<p class="py-6">Lo que no contamos en GitHub</p>
-			<Drawer {postDates} />
+			<!-- <Drawer {postDates} /> -->
 		</div>
 	</div>
 </div>
