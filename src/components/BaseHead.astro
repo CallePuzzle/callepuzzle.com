@@ -67,3 +67,24 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Theme initialization script (executed as early as possible to prevent FOUC) -->
+<script is:inline>
+    // Función para obtener el tema preferido del sistema
+    function getSystemTheme() {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    }
+
+    // Aplicar tema inmediatamente
+    (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+            .matches
+            ? "dark"
+            : "light";
+        const theme = savedTheme || preferredTheme;
+        document.documentElement.setAttribute("data-theme", theme);
+    })();
+</script>
