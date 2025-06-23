@@ -38,14 +38,15 @@ import logo from "../assets/logo.png";
 </header>
 
 <script>
-    // Función para aplicar el tema y sincronizar el checkbox
+    import { LIGHT_THEME, DARK_THEME } from "../consts";
+
     function applyTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
         const themeController = document.querySelector(
             ".theme-controller",
         ) as HTMLInputElement;
         if (themeController) {
-            themeController.checked = theme === "dark";
+            themeController.checked = theme === DARK_THEME;
         }
     }
 
@@ -53,7 +54,7 @@ import logo from "../assets/logo.png";
     function toggleTheme() {
         const currentTheme =
             document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        const newTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
         applyTheme(newTheme);
         localStorage.setItem("theme", newTheme);
     }
@@ -63,7 +64,7 @@ import logo from "../assets/logo.png";
         // Sincronizar el checkbox con el tema actual
         const currentTheme =
             document.documentElement.getAttribute("data-theme");
-        applyTheme(currentTheme || "light");
+        applyTheme(currentTheme || LIGHT_THEME);
 
         // Agregar event listener al botón de tema
         const themeController = document.querySelector(".theme-controller");
@@ -78,7 +79,7 @@ import logo from "../assets/logo.png";
         .addEventListener("change", (e) => {
             // Solo aplicar el tema del sistema si no hay preferencia guardada
             if (!localStorage.getItem("theme")) {
-                const systemTheme = e.matches ? "dark" : "light";
+                const systemTheme = e.matches ? DARK_THEME : LIGHT_THEME;
                 applyTheme(systemTheme);
             }
         });
