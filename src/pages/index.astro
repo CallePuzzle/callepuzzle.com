@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/main.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import backgroundName from "../assets/background-name.jpg";
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION} language="es">
+    <section
+        id="background"
+        class="flex h-[90vh] w-screen items-center justify-center"
+    >
+        <Image src={backgroundName} alt="Background Image" />
+    </section>
+</Layout>
+
+<style>
+    #background {
+        background: linear-gradient(
+            to bottom,
+            var(--color-base-100) 0%,
+            black 25%,
+            black 75%,
+            var(--color-base-100) 100%
+        );
+    }
+</style>

@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import NavList from "./NavList.astro";
+// import { Menu, Moon, Sun } from "@lucide/astro"; https://github.com/withastro/astro/issues/12928#issuecomment-2627355578
+import Menu from "@lucide/astro/icons/menu";
+import Moon from "@lucide/astro/icons/moon";
+import Sun from "@lucide/astro/icons/sun";
+
+import { Icon } from "astro-icon/components";
+import Routes from "../pages/routes";
+import logo from "../assets/logo.png";
+---
+
+<header>
+    <nav class="navbar bg-base-100 relative z-10 shadow-sm">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <Menu size="32" />
+                </div>
+                <NavList isBurgerMenu={true} />
+            </div>
+            <a href={Routes.home.getUrl()} class="btn btn-ghost text-xl">
+                <Image src={logo} alt="Logo" class="h-8 w-auto" />
+                <span class="calle-puzzle-gradient">Calle Puzzle</span>
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <NavList isBurgerMenu={false} />
+        </div>
+        <div class="navbar-end">
+            <a href="https://github.com/CallePuzzle" target="_blank">
+                <Icon name="line-md--github-loop" size="32" />
+            </a>
+            <label class="swap swap-rotate">
+                <input type="checkbox" class="theme-controller" value="dark" />
+                <Sun class="swap-off fill-current w-6 h-6" />
+                <Moon class="swap-on fill-current w-6 h-6" />
+            </label>
+        </div>
+    </nav>
+</header>
+
+<script>
+    import { LIGHT_THEME, DARK_THEME } from "../consts";
+
+    type Theme = typeof LIGHT_THEME | typeof DARK_THEME;
+
+    function applyTheme(theme: Theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        const themeController = document.querySelector(
+            ".theme-controller",
+        ) as HTMLInputElement;
+        if (themeController) {
+            themeController.checked = theme === DARK_THEME;
+        }
+    }
+
+    function toggleTheme() {
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
+        applyTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+        if (currentTheme === LIGHT_THEME || currentTheme === DARK_THEME) {
+            applyTheme(currentTheme);
+        }
+
+        const themeController = document.querySelector(".theme-controller");
+        if (themeController) {
+            themeController.addEventListener("change", toggleTheme);
+        }
+    });
+
+    window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+                const systemTheme = e.matches ? DARK_THEME : LIGHT_THEME;
+                applyTheme(systemTheme);
+            }
+        });
+</script>
+
+<style>
+    .calle-puzzle-gradient {
+        background: linear-gradient(90deg, #0884ba, #21a1d7, #17a3d4);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+</style>
