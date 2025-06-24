@@ -40,44 +40,38 @@ import logo from "../assets/logo.png";
 <script>
     import { LIGHT_THEME, DARK_THEME } from "../consts";
 
-    function applyTheme(theme) {
+    type Theme = typeof LIGHT_THEME | typeof DARK_THEME;
+
+    function applyTheme(theme: Theme) {
         document.documentElement.setAttribute("data-theme", theme);
-        const themeController = document.querySelector(
-            ".theme-controller",
-        ) as HTMLInputElement;
+        const themeController = document.querySelector(".theme-controller") as HTMLInputElement;
         if (themeController) {
             themeController.checked = theme === DARK_THEME;
         }
     }
 
-    // Función para alternar el tema
     function toggleTheme() {
-        const currentTheme =
-            document.documentElement.getAttribute("data-theme");
+        const currentTheme = document.documentElement.getAttribute("data-theme");
         const newTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
         applyTheme(newTheme);
         localStorage.setItem("theme", newTheme);
     }
 
-    // Ejecutar al cargar el DOM
     document.addEventListener("DOMContentLoaded", () => {
-        // Sincronizar el checkbox con el tema actual
-        const currentTheme =
-            document.documentElement.getAttribute("data-theme");
-        applyTheme(currentTheme || LIGHT_THEME);
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        if (currentTheme === LIGHT_THEME || currentTheme === DARK_THEME) {
+            applyTheme(currentTheme);
+        }
 
-        // Agregar event listener al botón de tema
         const themeController = document.querySelector(".theme-controller");
         if (themeController) {
             themeController.addEventListener("change", toggleTheme);
         }
     });
 
-    // Escuchar cambios en las preferencias del sistema
     window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (e) => {
-            // Solo aplicar el tema del sistema si no hay preferencia guardada
             if (!localStorage.getItem("theme")) {
                 const systemTheme = e.matches ? DARK_THEME : LIGHT_THEME;
                 applyTheme(systemTheme);
