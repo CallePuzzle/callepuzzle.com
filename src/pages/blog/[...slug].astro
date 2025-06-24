@@ -1,21 +1,49 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import { render } from 'astro:content';
+import { Image } from "astro:assets";
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/main.astro";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: post,
+    }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<Layout
+    title={post.data.title}
+    description={post.data.description}
+    language="es"
+>
+    <div class="hero w-screen">
+        {
+            post.data.image && (
+                <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="max-h-64 rounded-2xl lg:max-h-80"
+                />
+            )
+        }
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">{post.data.title}</h1>
+                <p class="mb-5">
+                    {post.data.description}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <article class="article__blog container px-10 py-5">
+        <Content />
+    </article>
+</Layout>
