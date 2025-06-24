@@ -18,7 +18,7 @@ const Routes: Routes = {
   },
   quienesSomos: {
     name: "Quienes somos",
-    getUrl: () => "/#quienes-somos",
+    getUrl: () => "/about",
   },
 };
 
