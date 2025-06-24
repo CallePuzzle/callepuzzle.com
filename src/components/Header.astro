@@ -6,7 +6,7 @@ import Menu from "@lucide/astro/icons/menu";
 import Moon from "@lucide/astro/icons/moon";
 import Sun from "@lucide/astro/icons/sun";
 
-import { Github } from "simple-icons-astro";
+import { Icon } from "astro-icon/components";
 import Routes from "../pages/routes";
 import logo from "../assets/logo.png";
 ---
@@ -30,7 +30,7 @@ import logo from "../assets/logo.png";
         </div>
         <div class="navbar-end">
             <a href="https://github.com/CallePuzzle" target="_blank">
-                <Github />
+                <Icon name="line-md--github-loop" size="32" />
             </a>
             <label class="swap swap-rotate">
                 <input type="checkbox" class="theme-controller" value="dark" />
