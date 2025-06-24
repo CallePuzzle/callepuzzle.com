@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import NavList from "./NavList.astro";
-import { Menu, Moon, Sun } from "@lucide/astro";
+// import { Menu, Moon, Sun } from "@lucide/astro"; https://github.com/withastro/astro/issues/12928#issuecomment-2627355578
+import Menu from "@lucide/astro/icons/menu";
+import Moon from "@lucide/astro/icons/moon";
+import Sun from "@lucide/astro/icons/sun";
+
 import { Github } from "simple-icons-astro";
 import Routes from "../pages/routes";
 import logo from "../assets/logo.png";
@@ -44,21 +48,25 @@ import logo from "../assets/logo.png";
 
     function applyTheme(theme: Theme) {
         document.documentElement.setAttribute("data-theme", theme);
-        const themeController = document.querySelector(".theme-controller") as HTMLInputElement;
+        const themeController = document.querySelector(
+            ".theme-controller",
+        ) as HTMLInputElement;
         if (themeController) {
             themeController.checked = theme === DARK_THEME;
         }
     }
 
     function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme");
         const newTheme = currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME;
         applyTheme(newTheme);
         localStorage.setItem("theme", newTheme);
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme");
         if (currentTheme === LIGHT_THEME || currentTheme === DARK_THEME) {
             applyTheme(currentTheme);
         }
